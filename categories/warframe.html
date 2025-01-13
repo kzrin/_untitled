@@ -1,0 +1,18 @@
+---
+layout: page
+permalink: /categories/warframe
+title: warframe
+---
+
+<img src="/assets/images/4x.gif" width="120px" height="auto" />
+<br>
+<ul id="archives" class="category-post-list">
+  {% for post in site.categories.warframe%}
+  <li><span>{{ post.date | date_to_string }}</span> &nbsp; <a href="{{ post.url }}">{{ post.title }}</a></li>
+  {% endfor %}
+</ul>
+<br>
+<br>
+<a class= "rick" href="https://youtu.be/xvFZjo5PgG0?si=_CrOa-HckR4S_0Ak" target="_blank">/?</a>
+
+<a class="back-button" href="/"><br>/home</a>

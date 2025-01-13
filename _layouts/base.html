@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'en-US' }}">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+    {% include head-custom.html %}
+
+{% seo %}
+  </head>
+
+  <body>
+
+    {% if page.layout == 'post' or page.layout == 'page' or page.layout == 'keep' %}
+    <div class="bathxry_header" style="display:none;"></div>
+    {% else %}
+    <div class="bathxry_header">
+      <div class="container">
+        <a id="a-title" href="{{ '/' | relative_url }}">
+          <h1>{{ site.title | default: site.github.repository_name }}</h1>
+        </a>
+        <h2>{{ site.description | default: site.github.project_tagline }}</h2>
+        <!-- <section id="links">
+          <a href="" class="btn"></a>
+        </section> -->
+        <section id="misc">
+          <p>vvitch.spiffy498@passinbox.com</p>
+        </section> 
+      </div>
+    </div>
+    {% endif %}
+  
+    <div class="container">
+      <section id="main_content">
+        {{ content }}
+      </section>
+    </div>
+  </body>
+</html>
+

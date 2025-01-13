@@ -1,0 +1,409 @@
+@import "font";
+@import "rouge-base16-dark";
+@import "default_colors";
+@import "cursor";
+
+$body-background: $black !default;
+$body-foreground: $alto !default;
+$header: $red !default;
+$blockquote-color: $silver-chalice !default;
+$blockquote-border: $dove-grey !default;
+$container-max-width: 1000px;
+
+@mixin media-max-width($max-width) {
+  @media (max-width: $max-width) {
+      @content;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: $body-background;
+  color: $body-foreground;
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
+  text-shadow: 0px 0px 1px $dark-red;
+  min-height: 100vh;
+  cursor: $main-cursor; 
+}
+
+:active {
+  cursor: $alt-cursor;
+}
+
+/* General & 'Reset' Stuff */
+
+.container {
+  width: 90%;
+  max-width: $container-max-width;
+  margin: 0 auto;
+}
+
+section {
+  display: block;
+  margin: 0 0 20px 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 20px;
+}
+
+li {
+  line-height: 1.4 ;
+  color: $alto;
+}
+
+/* Header, <header>
+   header   - container
+   h1       - project name
+   h2       - project description
+*/
+
+header, .bathxry_header {
+  background: rgba(0, 0, 0, 0.1);
+  width: 100%;
+  border-bottom: 0.1px dashed #666; //header;
+  padding: 20px 0;
+  margin: 0 0 40px 0;
+}
+
+.bathxry_header {
+  border: none;
+}
+
+header h1, .bathxry_header h1 {
+  font-size: 20px;
+  line-height: 1.5;
+  margin: 0 0 0 0px;
+  font-weight: bold;
+  font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
+  color: $red;//$header;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1),
+               0 0 5px rgba(181, 232, 83, 0.1),
+               0 0 10px rgba(181, 232, 83, 0.1);
+  letter-spacing: -1px;
+  -webkit-font-smoothing: antialiased;
+  @include media-max-width($container-max-width) {
+    margin-left: 0;
+  }
+}
+
+/* .bathxry_header h1:before, .bathxry_header h1:after {
+  content: " ⸸ ";
+  font-size: 4px;
+  color: $red;
+}*/
+
+
+header h2, .bathxry_header h2 {
+  font-size: 16px;
+  font-weight: 300;
+  color: $red;
+}
+
+#links .btn {
+  display: inline-block;
+  text-align: center;
+  margin: 0;
+}
+
+#misc {
+  font-size: 10px;
+  color: #999;
+  border-top: 0.1px dashed #666;
+  padding: 20px 0 0 0;
+  margin: 0;
+}
+
+#misc p {
+  max-width: fit-content;
+  margin: 0;
+}
+
+#misc p:hover {
+  cursor: $bknife;
+}
+
+/* Main Content
+*/
+
+#main_content {
+  width: 100%;
+  font-weight: light;
+  text-shadow: 0px 0px 2px $dark-red; 
+  -webkit-font-smoothing: antialiased;
+}
+
+section img {
+  max-width: 100%
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+  font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
+  color: $header;
+  letter-spacing: -0.03em;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1),
+               0 0 5px rgba(181, 232, 83, 0.1),
+               0 0 10px rgba(181, 232, 83, 0.1);
+}
+
+#main_content h1:before, #main_content h1:after {
+  content: "";
+}
+
+#main_content h1 {
+  font-size: 18px;
+  font-weight: lighter;
+  margin: 0px;
+}
+
+/* z.distinct-title {
+  font-family: Icomoon;
+  letter-spacing: 1px;
+  font-size: 22px;
+}*/
+
+#main_content h2 {
+  font-size: 18px;
+}
+
+#main_content h3 {
+  font-size: 16px;
+}
+
+#main_content h4 {
+  font-size: 12px;
+}
+
+#main_content h5 {
+  font-size: 12px;
+  text-transform: uppercase;
+  margin: 0 0 5px 0;
+}
+
+#main_content h6 {
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #999;
+  margin: 0 0 5px 0;
+}
+
+dt {
+  font-style: italic;
+  font-weight: bold;
+}
+
+ul li {
+  list-style-type: "⛧ ";
+  color: #666;
+  text-shadow: none; 
+  width:fit-content;
+}
+
+.category-post-list li {
+  list-style: none;
+  margin-left: -40px;
+}
+
+ul li:hover {
+  text-shadow: 0px 0px 1px $red;
+
+  a {
+    text-decoration: line-through $red 1px;
+  }
+
+  .previous-page,
+  .next-page {
+    text-decoration: none;
+  }
+
+  span {
+    text-shadow: none;
+  }
+}
+
+.category-post-list li:hover {
+  span {
+    text-shadow: 0px 0px 1px $red;
+  }
+}
+
+.archive-group li:hover {
+  color: $red;
+}
+
+blockquote {
+  color: $blockquote-color;
+  padding-left: 10px;
+  border-left: 1px dotted $blockquote-border;
+}
+
+pre {
+  background: rgba(0, 0, 0, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 10px;
+  font-size: 16px;
+  color: $purple;
+  border-radius: 2px;
+  word-wrap: normal;
+  overflow: auto;
+  overflow-y: hidden;
+}
+
+pre, code {
+  color: $purple;
+}
+
+code.highlighter-rouge {
+  background: rgba(0,0,0,0.9);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0px 3px;
+  margin: 0px -3px;
+  color: #aa759f;
+  border-radius: 2px;
+}
+
+table {
+  width: 100%;
+  margin: 0 0 20px 0;
+}
+
+th {
+  text-align: left;
+  border-bottom: 1px dashed #ff0000;
+  padding: 5px 10px;
+}
+
+td {
+  padding: 5px 10px;
+}
+
+hr {
+  height: 0;
+  border: 0;
+  border-bottom: 1px dashed #ff0000;
+  color: #ff0000;
+}
+
+strong {
+  color: $red;
+  font-weight: lighter;
+}
+
+u {
+  color: $purple;
+}
+
+/* Buttons
+*/
+
+.btn {
+  background: transparent;
+  padding: 8px 0px;
+  color: #999;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.btn::after {
+  content: "";
+}
+
+.btn:hover {
+  text-decoration: none;
+}
+
+/* Links
+   a, a:hover, a:visited
+*/
+
+a {
+  color: $red;
+  text-decoration: none;
+  cursor: $main-cursor;
+}
+
+.post-categories a {
+  color: #666;
+  text-decoration: none;
+}
+
+.post-list a,
+.archive-group a,
+#archives a {
+  color: $alto;
+  text-shadow: 0px 0px 1px $dark-red; 
+}
+
+a:hover {
+  text-decoration: underline wavy $red;
+}
+
+.post-categories a:hover {
+  text-decoration: none;
+}
+
+.pagination {
+  list-style: none;
+}
+
+.pagination li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.pagination li a {
+  color: #666;
+  text-decoration: none;
+}
+
+/* Clearfix */
+
+.cf:before, .cf:after {
+  content:"";
+  display:table;
+}
+
+.cf:after {
+  clear:both;
+}
+
+.cf {
+  zoom:1;
+}
+
+#a-title {
+  text-decoration: none;
+}
+
+.back-button,
+.source-button {
+  display: inline-block;
+}
+
+.archive-group {
+  display: inline-block;
+  margin: 0 0 5px 0;
+}
+
+.post-categories .home-button,
+.rick {
+  margin-right: 10px;
+}
+
+.source-button {
+  float: inline-end;
+}
+
+.post header {
+  margin-top: 0px;
+}
+
+.post #misc {
+  border-top: none;
+  border-bottom: 0.1px dashed #666;
+  margin-bottom: 20px;
+}

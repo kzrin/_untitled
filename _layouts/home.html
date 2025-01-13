@@ -1,0 +1,80 @@
+---
+layout: base
+---
+
+<div class="home">
+  <h1 class="distinct-title">#posts</h1>
+  {%- if page.title -%}
+  <h1 class="page-heading">{{ page.title }}</h1>
+  {%- endif -%}
+
+  {{ content }}
+
+
+  {% if site.paginate %}
+  {% assign posts = paginator.posts %}
+  {% else %}
+  {% assign posts = site.posts %}
+  {% endif %}
+
+
+  {%- if posts.size > 0 -%}
+  {%- if page.list_title -%}
+  <h2 class="post-list-heading">{{ page.list_title }}</h2>
+  {%- endif -%}
+  <ul class="post-list">
+    {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+    {%- for post in posts -%}
+    <li>
+      <span class="post-meta">{{ post.date | date: date_format }}</span>
+      <h3>
+        <a class="post-link" href="{{ post.url | relative_url }}">
+          {{ post.title | escape }}
+        </a>
+      </h3>
+      {%- if site.show_excerpts -%}
+      {{ post.excerpt }}
+      {%- endif -%}
+    </li>
+    {%- endfor -%}
+  </ul>
+
+  {% if site.paginate %}
+  <div class="pager">
+    <ul class="pagination">
+      {%- if paginator.previous_page %}
+      <li><a href="{{ paginator.previous_page_path | relative_url }}" class="previous-page">←</a></li>
+      {%- else %}
+      {%- endif %}
+      {%- if paginator.next_page %}
+      <li>
+        <div class="current-page">{{ paginator.page }}</div>
+      </li>
+      <li><a href="{{ paginator.next_page_path | relative_url }}" class="next-page">→</a></li>
+      {%- else %}
+      {%- endif %}
+    </ul>
+  </div>
+  {%- endif %}
+
+  {%- endif -%}
+
+</div>
+<br>
+<div id="archives">
+  {% assign numCategories = site.categories | size %}
+  {% if numCategories > 1 %}
+    <h1 class="distinct-title">#categories</h1>
+    {% for category in site.categories %}
+      <ul class="archive-group">
+        <li>
+          {% capture category_name %}{{ category | first }}{% endcapture %}
+          <div id="{{ category_name | slugize }}"></div>
+          <p></p>
+          <a href="../categories/{{ category_name | slugize }}">{{ category_name }}</a>
+        </li>
+      </ul>
+    {% endfor %}
+  {% endif %}
+</div>
+
